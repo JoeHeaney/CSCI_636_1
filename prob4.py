@@ -9,8 +9,8 @@ class Inverted(MRJob):
         words = WORD_RE.findall(line)
         match = re.search(r'Document (\d+): (.+)', line)
         doc= match.group(1)
-        for word in words:
-            yield word, "Doc " + doc
+        for w in words:
+            yield w, "Doc " + doc
     def reducer(self, word, docs):
         total = list(docs)
         group = ['document','1','2','3',':']
